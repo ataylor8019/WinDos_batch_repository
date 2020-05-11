@@ -3,9 +3,8 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 SET IMPORTFILE=""
 
-sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -i .\PizzaMakerFileFlattenSetup.sql
 sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -i .\PizzaMakerFileFlattenRawTextFileLoad.sql
-sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -i .\CUSTOMERLOADTEST.sql
-sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -i .\MENULOADTEST.sql
-sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -i .\ORDERSLOADTEST.sql
-sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -i .\ORDEREDITEMSLOADTEST.sql
+sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -d TestPizzaImport -Q "EXEC CUSTOMERLOAD"
+sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -d TestPizzaImport -Q "EXEC MENULOAD"
+sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -d TestPizzaImport -Q "EXEC ORDERSLOAD"
+sqlcmd -Snp:\\.\pipe\MSSQL$SQLEXPRESS\sql\query -d TestPizzaImport -Q "EXEC ORDEREDITEMSLOAD"
